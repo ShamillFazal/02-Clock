@@ -70,11 +70,20 @@
 
     <script>
         // JavaScript function to update clock hands' positions
+
+        // Get a reference to the second hand element
+        const secondHand = document.querySelector('.second-hand');
+
+        // Function to update the clock hands' positions
         function setDate() {
             const now = new Date();
             const seconds = now.getSeconds();
+            // Calculate the degree rotation for the second hand based on current seconds
+            const secondsDegrees = ((seconds / 60) * 360) + 90;
+            // Apply the rotation to the second hand element
+            secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
             console.log(seconds);
-            // More code to update hand positions based on time
+            // More code to update other hand positions based on time
         }
         
         // Update the clock every second
