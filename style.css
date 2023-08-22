@@ -1,0 +1,59 @@
+
+      /* Global styles for the entire page */
+      html {
+        background-image: url('https://images.unsplash.com/photo-1531685250784-7569952593d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');
+        background-size: cover;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        text-align: center;
+        font-size: 10px;
+      }
+
+      /* Styles for the main body */
+      body {
+        font-size: 2rem;
+        display: flex;
+        flex: 1;
+        min-height: 100vh;
+        align-items: center;
+      }
+
+      /* Styles for the clock container */
+      .clock {
+        width: 30rem;
+        height: 30rem;
+        border: 20px solid black;
+        border-radius: 50%;
+        margin: 50px auto;
+        position: relative;
+        padding: 2rem;
+      }
+
+      /* Styles for the clock face */
+      .clock-face {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform: translateY(-3px); /* Shift the clock face up by 3 pixels */
+      }
+
+      /* Styles for clock hands */
+      .hand {
+        width: 50%;
+        height: 6px;
+        background: black;
+        position: absolute;
+        top: 50%;
+        transform-origin: 100%; /* Set rotation pivot point to the end of the hand */
+        transform: rotate(
+          90deg
+        ); /* Rotate the hands 90 degrees to start at 12 o'clock */
+        transition: all 0.05s; /* Add smooth transitions when hand positions change */
+        transition-timing-function: cubic-bezier(
+          0.1,
+          2.7,
+          0.58,
+          1
+        ); /* Custom easing function for transitions */
+      }
+    
