@@ -1,94 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Clock App</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- Clock container -->
     <div class="clock">
-        <!-- Clock face containing hour, minute, and second hands -->
-        <div class="clock-face">
-            <div class="hand hour-hand"></div>
-            <div class="hand min-hand"></div>
-            <div class="hand second-hand"></div>
-        </div>
+      <!-- Clock face containing hour, minute, and second hands -->
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
     </div>
 
     <style>
-        /* Global styles for the entire page */
-        html {
-            background-color: aqua;
-            background-size: cover;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            text-align: center;
-            font-size: 10px;
-        }
+      /* Global styles for the entire page */
+      html {
+        background-color: aqua;
+        background-size: cover;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        text-align: center;
+        font-size: 10px;
+      }
 
-        /* Styles for the main body */
-        body {
-            font-size: 2rem;
-            display: flex;
-            flex: 1;
-            min-height: 100vh;
-            align-items: center;
-        }
+      /* Styles for the main body */
+      body {
+        font-size: 2rem;
+        display: flex;
+        flex: 1;
+        min-height: 100vh;
+        align-items: center;
+      }
 
-        /* Styles for the clock container */
-        .clock {
-            width: 30rem;
-            height: 30rem;
-            border: 20px solid white;
-            border-radius: 50%;
-            margin: 50px auto;
-            position: relative;
-            padding: 2rem;
-        }
+      /* Styles for the clock container */
+      .clock {
+        width: 30rem;
+        height: 30rem;
+        border: 20px solid white;
+        border-radius: 50%;
+        margin: 50px auto;
+        position: relative;
+        padding: 2rem;
+      }
 
-        /* Styles for the clock face */
-        .clock-face {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform: translateY(-3px); /* Shift the clock face up by 3 pixels */
-        }
+      /* Styles for the clock face */
+      .clock-face {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform: translateY(-3px); /* Shift the clock face up by 3 pixels */
+      }
 
-        /* Styles for clock hands */
-        .hand {
-            width: 50%;
-            height: 6px;
-            background: black;
-            position: absolute;
-            top: 50%;
-            transform-origin: 100%; /* Set rotation pivot point to the end of the hand */
-            transform: rotate(90deg); /* Rotate the hands 90 degrees to start at 12 o'clock */
-            transition: all 0.05s; /* Add smooth transitions when hand positions change */
-            transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1); /* Custom easing function for transitions */
-        }
+      /* Styles for clock hands */
+      .hand {
+        width: 50%;
+        height: 6px;
+        background: black;
+        position: absolute;
+        top: 50%;
+        transform-origin: 100%; /* Set rotation pivot point to the end of the hand */
+        transform: rotate(
+          90deg
+        ); /* Rotate the hands 90 degrees to start at 12 o'clock */
+        transition: all 0.05s; /* Add smooth transitions when hand positions change */
+        transition-timing-function: cubic-bezier(
+          0.1,
+          2.7,
+          0.58,
+          1
+        ); /* Custom easing function for transitions */
+      }
     </style>
 
     <script>
-        // JavaScript function to update clock hands' positions
 
-        // Get a reference to the second hand element
-        const secondHand = document.querySelector('.second-hand');
+      // JavaScript function to update clock hands' positions
 
-        // Function to update the clock hands' positions
-        function setDate() {
-            const now = new Date();
-            const seconds = now.getSeconds();
-            // Calculate the degree rotation for the second hand based on current seconds
-            const secondsDegrees = ((seconds / 60) * 360) + 90;
-            // Apply the rotation to the second hand element
-            secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
-            console.log(seconds);
-            // More code to update other hand positions based on time
-        }
-        
-        // Update the clock every second
-        setInterval(setDate, 1000);
+      // Get a reference to the second hand element
+      const secondHand = document.querySelector(".second-hand");
+      // Get a reference to the minute hand element
+      const minsHand = document.querySelector(".min-hand");
+      // Get a reference to the hour hand element
+      const hourHand = document.querySelector(".hour-hand");
+
+      // Function to update the clock hands' positions
+      function setDate() {
+        const now = new Date();
+        const seconds = now.getSeconds();
+        // Calculate the degree rotation for the second hand based on current seconds
+        const secondsDegrees = (seconds / 60) * 360 + 90;
+        // Apply the rotation to the second hand element
+        secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+        const mins = now.getMinutes();
+        // Calculate the degree rotation for the minute hand based on current seconds
+        const minsDegrees = (mins / 60) * 360 + 90;
+        // Apply the rotation to the minute hand element
+        minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+        const hour = now.getHours();
+        // Calculate the degree rotation for the hour hand based on current seconds
+        const hourDegrees = (hour / 12) * 360 + 90;
+        // Apply the rotation to the hour hand element
+        hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+      }
+
+      // Update the clock every second
+      setInterval(setDate, 1000);
     </script>
-
-</body>
+  </body>
 </html>
